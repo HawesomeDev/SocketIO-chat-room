@@ -5,9 +5,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 // We define a route handler '/' that gets called when we hit our website home.
-app.set('port', (process.env.PORT || 5000));
-app.get('/', function(request, response){
-	response.sendFile(__dirname + '/index.html');
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/index.html');
 });
 
 //Listen on the 'connection' event for incoming sockets, and log it to the console
@@ -26,6 +25,6 @@ io.on('connection', function(socket){
 
 
 //We make the http server listen on port 3000
-// http.listen(3000, function(){
-// 	console.log('listening on *:3000');
-// })
+http.listen(3000, function(){
+	console.log('listening on *:3000');
+})
